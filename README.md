@@ -76,6 +76,7 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
   - `bonny`
   - `chicka`
   - `foxy` <br>
+  
 `this.info.id` - id (například na první index `EnemakDB`)<br>
 `this.info.position` - pozice <br>
 `this.info.anger` - pravděpodobnost na akci <br>
