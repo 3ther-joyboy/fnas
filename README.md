@@ -34,14 +34,20 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `renderSpeed` - kolik milisekund bude mezi každým framem <br>
 `ubdateSpeed` - kolik milisekund bude mezi každým ubdatem <br>
 `moseposition` - array který uchovává x a y souřadnice kurzoru <br>
-
 ### debug
-`debug` - boolean
-`pointerpos` - array který uchovává x a y souřadnice debug kurzoru
+`debug` - boolean debug <br>
+`pointerpos` - array který uchovává x a y souřadnice debug kurzoru <br>
 ### menu
-`buttonsMM` - velikost, barva, text a font tlačítek v menu
-`settingB` - jméno, minimální, maximální hodnota, násobič a aktuální hodnota proměné v custom
-`settingS` - vyhodnocování slideru v settings
-`mM` - status menu, 
-`mainMenuId` - id setIntervalu spravující rendering menu
+`buttonsMM` - velikost, barva, text a font tlačítek v menu <br>
+`settingB` - jméno, minimální, maximální hodnota, násobič a aktuální hodnota proměné v custom <br>
+`settingS` - vyhodnocování slideru v settings <br>
+`mM` - status menu (jestli je vybraný tutorial, settings, custom nebo samotné menu) <br>
+`mainMenuId` - id setIntervalu spravující rendering menu <br>
 ### game
+`time` - array s aktuálním časem a časem finálním <br>
+`godmode` - boolean nesmrtelnost <br>
+`power` - energie <br>
+`blackoutVar` - boolean když je `power` na 0  <br>
+`tabletPullupLoss`, `doorLoss`, `lightLoss`, `powerloss` - stráty energie <br>
+#### tablet
+`cameraOffset` - 
