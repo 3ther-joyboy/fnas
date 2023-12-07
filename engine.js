@@ -1,6 +1,5 @@
 /* to do list =>
     tutorial
-    win/loos scr
     high score?
 */
 
@@ -21,7 +20,6 @@ let renderSpeed = 10;
 let ubdateSpeed = 100;
 
 let mousePosition = [0, 0];
-let clicked = false;
 window.addEventListener("mousemove", (event) => {
     
     // problémy s velikostí oken a "responzobilitou"
@@ -56,10 +54,10 @@ const buttonsMM = [
 ];
 let settingB =[
 [
-    ["fredy",0,10,1,5],
-    ["chicka",0,10,1,3],
-    ["bonny",0,10,1,3],
-    ["foxy",0,10,1,2],
+    ["Hevy",0,10,1,5],
+    ["Solidger",0,10,1,3],
+    ["Demo",0,10,1,3],
+    ["Scout",0,10,1,2],
 ],[
     ["Light Loss",0,100,0.1,1],
     ["Door Loss",0,100,0.1,5],
@@ -67,14 +65,14 @@ let settingB =[
     ["Constant",0,100,0.05,0],
 ],[
     ["Power",0,100,10,10],
-    ["update speed [ms]",1,100,100,3],
-    ["render speed [ms]",1,100,1,10],
+    ["Update speed [ms]",1,100,100,3],
+    ["Render speed [ms]",1,100,1,10],
     ["Time [S]",0,100,10,12],
 ],[
-    ["batery show",0,1,1,1],
-    ["god mode",0,1,1,0],
-    ["gui",0,1,1,1],
-    ["time show",0,1,1,1],    
+    ["Batery show",0,1,1,1],
+    ["God mode",0,1,1,0],
+    ["GUI",0,1,1,1],
+    ["Time show",0,1,1,1],    
 ]
 ];
 function mainMenuSelect(){
@@ -250,7 +248,20 @@ const fredyCamera = new Image();fredyCamera.src = nill;
 const bonnyCamera = new Image();bonnyCamera.src = nill;
 const chickaCamera = new Image();chickaCamera.src = nill;
 const foxyCamera = new Image();foxyCamera.src = nill;
-
+{ // načítání do ramek
+const load = new Image();
+for(let i = 0;i<EnemakDB.length;i++){
+    for(let y = 0;y<EnemakDB[0].length;y++){
+        load.src = EnemakDB[i][y];
+    }
+}
+    load.src = "./assets/map/rooms/rooma0dark.png";
+    load.src = "./assets/map/rooms/rooma0light.png";
+    const arr =[3,5,6,7,8,9,10,11,12,14];
+    for(let i = 0;i<arr.length;i++){
+        load.src = "./assets/map/rooms/room" + arr[i]+ ".png"
+    }
+}
 const menuBacground = new Image(); menuBacground.src = "./assets/mainMenu.gif";
 menuBacground.autoplay = true;
 menuBacground.loop = true;
@@ -519,7 +530,7 @@ const roomPosition = [
     [1100, 360, 1300,625+talbetCorners/2], // 6
     [1100, 624-talbetCorners/2, 1300, canvasY], // 14
     [330, 120, 825+talbetCorners/2+1, 360], //7
-    [825-talbetCorners*1.5, 120, 1300, 360], //7
+    [825-talbetCorners*1.5, 120, 1300, 360], //8
     [550, 330, 900, 480], // 9
     [880, 350, 1150, 550], // 10
     [500, 480, 850, 680], // 11
@@ -623,7 +634,7 @@ function tablet(x) {
         ctx.drawImage(cameraImg,talbetEdges+talbetCorners, talbetEdges+talbetCorners, canvasX - (talbetCorners+talbetEdges) * 2, canvasY - (talbetEdges+talbetCorners) * 2);
         enemyCamRender(ඞ);
         ctx.fillStyle = "#fff";
-        ctx.font = "40px ariel"
+        ctx.font = "40px Arial"
         if(settingB[3][0][4] == 1)ctx.fillText(Math.round(power) + "%", talbetEdges+10,talbetEdges+talbetCorners-10);
         if( 0 < time[1] && settingB[3][3][4] == 1)ctx.fillText(timeclock, talbetEdges+canvasX/10,talbetEdges+talbetCorners-10);
         ctx.globalAlpha = 0.1; 
@@ -724,6 +735,7 @@ function win(){
         let winText = "You win       Power status: ";
         if(power < 0){ winText += "0%";}else{winText += Math.round(power) + "%"}
 
+    ctx.fillStyle = "#fff";
     ctx.fillText(winText,canvasX/3,canvasY/2)
     pause = true;
     setInterval(endScr,1000);
