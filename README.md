@@ -1,7 +1,7 @@
-# Fnas
-Klauzurní práce 2023/24
-Druhý ročník / první pololetí
-Studijní předmět: Programovací jazyk JavaScriptk
+# Five Nights at Sorce
+**Klauzurní práce *2023/24*** <br>
+**2. ročník 1. pololetí** <br>
+**Studijní předmět:** *Programovací jazyk JavaScriptk* <br>
 ## Programy
 Programy, které byly využity pro tyto klauzury, na naprogramování téhle hry jsou:
 -	[VS Code](https://code.visualstudio.com/) – psaní kódu 
@@ -26,7 +26,7 @@ Poté se vám zobrazí skóre, kolik energie vám zůstalo a v případě prohry
 V setitn je slide bar kterým se upravuje velikost kamer, a kliknutím mimo se upravuje pozice kamer na tabletu.
 V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charakterů, kolik elektřiny
 # Kód
-## variables & constants
+## variables / constants / objects
 ### canvas
 `canvasX canvasY` - poměry stran <br> 
 `canvas` - odkaz na element v html <br>
@@ -48,6 +48,40 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `godmode` - boolean nesmrtelnost <br>
 `power` - energie <br>
 `blackoutVar` - boolean když je `power` na 0  <br>
-`tabletPullupLoss`, `doorLoss`, `lightLoss`, `powerloss` - stráty energie <br>
+`tabletPullupLoss`, `doorLoss`, `lightLoss`, `powerloss` - stráty energie <br>doorlock
+`doorlock` - array se stavy dveří <br>
 #### tablet
-`cameraOffset` - 
+`cameraOffset` - off set kamer a resize background kamer <br>
+`cameraSelect` - aktuálně vybraná kamera <br>
+`tabletUpTrigger` - do spodní kolikatiny se zpustí tablet <br>
+`cameras` - boolean zapnutých kamer <br>
+`tabletCorners` - kolik `ctx` unit má tablet vynecháno od okraje obrazovky <br>
+`tabletEdges` - kolik `ctx` unit má obrazovka tabletu vynecháno od okraje tabletu <br>
+`camSize` - velikost kamer <br>
+`room0camAngle` - "úhel" v hlavní místnosti u koukání do leva/prava <br>
+`roomPosition` - opzice kamer na minimapě v `ctx` unitách <br>
+`chodbyThicc` - šířka chodeb na kamerách v `ctx` unitách <br>
+#### assets
+`nill` - sorce cesta k transparentímu 1x1 px obrázku <br>
+`EnemakDB` - 2 dimenzionalni array s sorce cestamy k určitým obrázků nepřátel <br>
+`guiTablet` - jednoduchý gui pro ukázku ovládání <br>
+`guiJitter` - šum u měnění kamer <br>
+`testImg` - testovací obrázek <br>
+`fredyRoom0`, `bonnyRoom0`, `chickaRoom0`, `foxyRoom0` - render nepřátel v hlavní místnosti<br>
+`room0Img`, `cameraImg` - render příšlusících místností <br>
+`fredyCamera`, `bonnyCamera`, `chickaCamera`, `foxyCamera` - render nepřátel na kamerách <br>
+#### enemies
+`enemak` - class nepřátel
+  - `fredy`
+  - `bonny`
+  - `chicka`
+  - `foxy`
+`this.info.id` - id (například na první index `EnemakDB`)<br>
+`this.info.position` - pozice <br>
+`this.info.anger` - pravděpodobnost na akci <br>
+`this.ubdate.now` - aktuální průběh ubdatu <br>
+`this.ubdate.max` - podmínka zpuštění ubdatu <br>
+`this.camerastun` - ohromení z kamer (pouze u `foxy`) <br>
+## Funkce
+### class enemak
+`attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
