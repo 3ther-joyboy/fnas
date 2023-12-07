@@ -1,4 +1,7 @@
-# fanf
+# Fnas
+Klauzurní práce 2023/24
+Druhý ročník / první pololetí
+Studijní předmět: Programovací jazyk JavaScriptk
 ## Programy
 Programy, které byly využity pro tyto klauzury, na naprogramování téhle hry jsou:
 -	[VS Code](https://code.visualstudio.com/) – psaní kódu 
@@ -25,12 +28,12 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 # Kód
 ## variables & constants
 ### canvas
-`canvasX canvasY` - poměry stran
-`canvas` - odkaz na element v html
-`ctx` - canvas
-`renderSpeed` - kolik milisekund bude mezi každým framem
-`ubdateSpeed` - kolik milisekund bude mezi každým ubdatem
-`moseposition` - array který uchovává x a y souřadnice kurzoru
+`canvasX canvasY` - poměry stran <br> 
+`canvas` - odkaz na element v html <br>
+`ctx` - canvas <br>
+`renderSpeed` - kolik milisekund bude mezi každým framem <br>
+`ubdateSpeed` - kolik milisekund bude mezi každým ubdatem <br>
+`moseposition` - array který uchovává x a y souřadnice kurzoru <br>
 
 ### debug
 `debug` - boolean
