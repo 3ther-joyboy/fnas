@@ -135,3 +135,6 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
 ### class enemak
 `attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
+`movmentOpportunityFoxy()` - zařizuje pohyb `foxy` po předdefinované trase a nedovoluje mu pohnout se dokut není `this.camerastun` na 0 <br>
+`movmentOpportunityFredy()` - pohyb po mapě `fredy` který se náhodně teleportuje a je šance 1/15 že zaujme útočnou pozici před dveřmy <br>
+`movmentOpporuniy()` - lyneární pohyb mapě pro `bonny`, `chicka` s procentáží na rozhodování <br>
