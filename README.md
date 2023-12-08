@@ -28,7 +28,7 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 # Kód
 ## variables / constants / objects
 ### canvas
-`canvasX canvasY` - poměry stran <br> 
+`canvasX canvasY` - poměry stran v "`ctx`" unitech <br> 
 `canvas` - odkaz na element v html <br>
 `ctx` - canvas <br>
 `renderSpeed` - kolik milisekund bude mezi každým framem <br>
