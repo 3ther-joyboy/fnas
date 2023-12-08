@@ -84,17 +84,21 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `this.ubdate.max` - podmínka zpuštění ubdatu <br>
 `this.camerastun` - ohromení z kamer (pouze u `foxy`) <br>
 ## Funkce
-`dies()` <br>
-`win()` <br>
 ### game
+`endSrc()` přičte ke `k` 1 a jestli bude vyčí jak 5 restartuje stránku <br>
+`win()` printne výherní zprávu a kolik `power` vám zůstalo<br>
+`dies()` printne proherní zprávu kolik `power` a jak daleko jste se dostaly<br>
 `ubdate()` <br>
 `render()` <br>
 ### menu
 `mainMenu()` - velký switch s různýma stranama hlavního menu (kdybych tou dobou měl oběkty bylo by to přez oběkty) <br>
-  0 - první stránka co uvidíte při načtení indexu 
-  1 - [Play] clearne interval s `mainMenu()` funkcí a zpustí `ubdate()` s `render()` funkcí do příslušících intervalů
-  2 - [Tutorial] listuje arrayem png
-  3 - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset`
-  4 - [Custom] forloopy co měří `settingB` velikost a zakreslují podle toho do canvasu
+  case 0 - první stránka co uvidíte při načtení indexu <br>
+  case 1 - [Play] clearne interval s `mainMenu()` funkcí a zpustí `ubdate()`, `render()`, `timer()` do příslušících intervalů <br>
+  case 2 - [Tutorial] listuje arrayem png <br>
+  case 3 - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset` <br>
+  case 4 - [Custom] forloopy co měří `settingB` velikost a zakreslují podle toho do canvasu <br>
+
+`variablerefresh()` nastavý `settingB[4]` na určené hodnoty (`fredy.info.anger`,`bonny.info.anger`,`chicka.info.anger`, `foxy.info.anger`, `lightLoss`, `doorLoss`, `tabletPullupLoss`, `powerloss`, `power`, `ubdateSpeed`, `renderSpeed`, `time[1]`, `godmode`) <br>
+`mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
 ### class enemak
 `attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
