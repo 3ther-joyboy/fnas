@@ -1,8 +1,3 @@
-/* to do list =>
-    tutorial
-    high score?
-*/
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 //===================================== global variables =====================================
@@ -248,20 +243,7 @@ const fredyCamera = new Image();fredyCamera.src = nill;
 const bonnyCamera = new Image();bonnyCamera.src = nill;
 const chickaCamera = new Image();chickaCamera.src = nill;
 const foxyCamera = new Image();foxyCamera.src = nill;
-{ // načítání do ramek
-const load = new Image();
-for(let i = 0;i<EnemakDB.length;i++){
-    for(let y = 0;y<EnemakDB[0].length;y++){
-        load.src = EnemakDB[i][y];
-    }
-}
-    load.src = "./assets/map/rooms/rooma0dark.png";
-    load.src = "./assets/map/rooms/rooma0light.png";
-    const arr =[3,5,6,7,8,9,10,11,12,14];
-    for(let i = 0;i<arr.length;i++){
-        load.src = "./assets/map/rooms/room" + arr[i]+ ".png"
-    }
-}
+
 const menuBacground = new Image(); menuBacground.src = "./assets/mainMenu.gif";
 menuBacground.autoplay = true;
 menuBacground.loop = true;
