@@ -84,5 +84,17 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `this.ubdate.max` - podmínka zpuštění ubdatu <br>
 `this.camerastun` - ohromení z kamer (pouze u `foxy`) <br>
 ## Funkce
+`dies()` <br>
+`win()` <br>
+### game
+`ubdate()` <br>
+`render()` <br>
+### menu
+`mainMenu()` - velký switch s různýma stranama hlavního menu (kdybych tou dobou měl oběkty bylo by to přez oběkty) <br>
+  0) - první stránka co uvidíte při načtení indexu 
+  1) - [Play] clearne interval s `mainMenu()` funkcí a zpustí `ubdate()` s `render()` funkcí do příslušících intervalů
+  2) - [Tutorial] listuje arrayem png
+  3) - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset`
+  4) - [Custom] forloopy co měří `settingB` velikost a zakreslují podle toho do canvasu
 ### class enemak
 `attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
