@@ -90,6 +90,10 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `dies()` printne proherní zprávu kolik `power` a jak daleko jste se dostaly<br>
 `ubdate()` <br>
 `render()` <br>
+`buttonDraw()` - vykresluje tlačítka od dveří <br>
+`doorlocking(x)` - měmní booleany v array `doorlock` podle x<br>
+`doors()` - kontroluje na které tlačíto dveří klikáte a zpouští funkci `doorlocking(x)` s danými dveřmi <br>
+`lights()` - 
 ### menu
 `mainMenu()` - velký switch s různýma stranama hlavního menu (kdybych tou dobou měl oběkty bylo by to přez oběkty) <br>
   case 0 - první stránka co uvidíte při načtení indexu <br>
@@ -112,6 +116,10 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
   -  `renderSpeed`
   -  `time[1]`
   -  `godmode` <br>
+
+`camPositionRefresh()` - stejné jak `variablerefresh()`, jen platí pouze pro
+  - `camPosition` <br>
+ 
 `mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
 ### class enemak
 `attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
