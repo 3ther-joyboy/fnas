@@ -30,7 +30,7 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 ### canvas
 `canvasX canvasY` - poměry stran v "`ctx`" unitech <br> 
 `canvas` - odkaz na element v html <br>
-`ctx` - canvas <br>
+`ctx` - vytvoří z `canvas` [2D rendering objekt](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) <br>
 `renderSpeed` - kolik milisekund bude mezi každým framem <br>
 `ubdateSpeed` - kolik milisekund bude mezi každým ubdatem <br>
 `moseposition` - array který uchovává x a y souřadnice kurzoru <br>
@@ -112,7 +112,7 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
   case 1 - [Play] clearne interval s `mainMenu()` funkcí a zpustí `ubdate()`, `render()`, `timer()` do příslušících intervalů <br>
   case 2 - [Tutorial] listuje arrayem png <br>
   case 3 - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset` <br>
-  case 4 - [Custom] forloopy co měří `settingB` velikost a zakreslují podle toho do canvasu <br>
+  case 4 - [Custom] vykreslí všechny tlačítka z  `settingB` a pomocí `.length` spočítá na kolikatiny má rozdělit `canvasX/Y`  <br>
 
 `variablerefresh()` nastavý `settingB[4]` na určené hodnoty: 
   -  `fredy.info.anger`
