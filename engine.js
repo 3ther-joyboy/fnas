@@ -539,7 +539,7 @@ function enemyCamRender(z){
     ctx.drawImage(fredyCamera,talbetEdges + talbetCorners, talbetEdges + talbetCorners, canvasX - (talbetEdges + talbetCorners) * 2, canvasY - (talbetEdges + talbetCorners) * 2);
     ctx.drawImage(foxyCamera,talbetEdges + talbetCorners, talbetEdges + talbetCorners, canvasX - (talbetEdges + talbetCorners) * 2, canvasY - (talbetEdges + talbetCorners) * 2);
 }
-let ඞ = 7;
+let roomSඞlection = 7;
 function roomsDraw(y) {
     const x = [
         (roomPosition[y][0]) / camSize + camPosition[0],
@@ -553,16 +553,16 @@ function roomsDraw(y) {
                 if (y < 11 && y != 0) { ctx.fillStyle = "#353"; cameraSelect = y;
                 jittering[2]=true;
         switch(y){
-            case 1:  cameraImg.src = "./assets/map/rooms/room3.png"  ;ඞ = 3;break;
-            case 2:  cameraImg.src = "./assets/map/rooms/room5.png"  ;ඞ = 5;break;
-            case 3:  cameraImg.src = "./assets/map/rooms/room6.png"  ;ඞ = 6;break; 
-            case 4:  cameraImg.src = "./assets/map/rooms/room14.png" ;ඞ = 14;break;
-            case 5:  cameraImg.src = "./assets/map/rooms/room7.png"  ;ඞ = 7;break; 
-            case 6:  cameraImg.src = "./assets/map/rooms/room8.png"  ;ඞ = 8;break; 
-            case 7:  cameraImg.src = "./assets/map/rooms/room9.png"  ;ඞ = 9;break;
-            case 8:  cameraImg.src = "./assets/map/rooms/room10.png" ;ඞ = 10;break;
-            case 9:  cameraImg.src = "./assets/map/rooms/room11.png" ;ඞ = 11;break;
-            case 10: cameraImg.src = "./assets/map/rooms/room12.png" ;ඞ = 12;break;
+            case 1:  cameraImg.src = "./assets/map/rooms/room3.png"  ;roomSඞlection = 3;break;
+            case 2:  cameraImg.src = "./assets/map/rooms/room5.png"  ;roomSඞlection = 5;break;
+            case 3:  cameraImg.src = "./assets/map/rooms/room6.png"  ;roomSඞlection = 6;break; 
+            case 4:  cameraImg.src = "./assets/map/rooms/room14.png" ;roomSඞlection = 14;break;
+            case 5:  cameraImg.src = "./assets/map/rooms/room7.png"  ;roomSඞlection = 7;break; 
+            case 6:  cameraImg.src = "./assets/map/rooms/room8.png"  ;roomSඞlection = 8;break; 
+            case 7:  cameraImg.src = "./assets/map/rooms/room9.png"  ;roomSඞlection = 9;break;
+            case 8:  cameraImg.src = "./assets/map/rooms/room10.png" ;roomSඞlection = 10;break;
+            case 9:  cameraImg.src = "./assets/map/rooms/room11.png" ;roomSඞlection = 11;break;
+            case 10: cameraImg.src = "./assets/map/rooms/room12.png" ;roomSඞlection = 12;break;
             default:
         }}}
     }
@@ -611,15 +611,15 @@ function jitter(){
 }
 function tablet(x) {
     if (x == true) {
-        ctx.fillStyle = "#520";
+        ctx.fillStyle = "#111";
         ctx.fillRect(talbetEdges, talbetEdges, canvasX - talbetEdges * 2, canvasY - talbetEdges * 2);   
         ctx.drawImage(cameraImg,talbetEdges+talbetCorners, talbetEdges+talbetCorners, canvasX - (talbetCorners+talbetEdges) * 2, canvasY - (talbetEdges+talbetCorners) * 2);
-        enemyCamRender(ඞ);
+        enemyCamRender(roomSඞlection);
         ctx.fillStyle = "#fff";
         ctx.font = "40px Arial"
         if(settingB[3][0][4] == 1)ctx.fillText(Math.round(power) + "%", talbetEdges+10,talbetEdges+talbetCorners-10);
         if( 0 < time[1] && settingB[3][3][4] == 1)ctx.fillText(timeclock, talbetEdges+canvasX/10,talbetEdges+talbetCorners-10);
-        ctx.globalAlpha = 0.1; 
+        ctx.globalAlpha = 0.05; 
         ctx.fillRect(canvasX-talbetCorners-cameraOffset[0]+cameraOffset[2][0],canvasY-talbetCorners-cameraOffset[1]+cameraOffset[2][1],-canvasX/camSize+cameraOffset[3][0],-canvasY/camSize+cameraOffset[3][1]);
         ctx.globalAlpha = 1;
         
