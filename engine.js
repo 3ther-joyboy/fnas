@@ -192,8 +192,6 @@ function mainMenu(){
     }
 }
 const mainMenuId = setInterval(mainMenu, renderSpeed);
-
-
 //================================== global game variables ===================================
 let time = [0,120];
 let godmode = 0;
@@ -203,7 +201,7 @@ let power = 100;
 let tabletPullupLoss = 20;
 let light = false;
 let lightMouse = false;
-let doorButons = [100,300,canvasY/2-100,150];
+let doorButons = [75,130,canvasY/3,110];
 let doorlock = [false,false,false];
 
 let doorLoss = 10;
@@ -211,7 +209,7 @@ let lightLoss = 5;
 let powerloss = 0;
 
 // tablet
-let cameraOffset = [-200,-20,[-150,0],[400,30]];
+let cameraOffset = [-50,69,[300,75],[canvasX-260,canvasY+25]];
 let cameraSelect = 5;
 const tabletUpTriger = 10;
 let tabletMouse = false;
@@ -219,7 +217,7 @@ const tabletTriger = 4;
 let cameras = false;
 const talbetCorners = 50;
 const talbetEdges = 30;
-let camSize = 1.5;
+let camSize = 2;
 let room0camAngle = -(canvasX / 2);
 
 // imgs
@@ -237,8 +235,15 @@ const fredyRoom0 = new Image();fredyRoom0.src = nill;
 const bonnyRoom0 = new Image();bonnyRoom0.src = nill;
 const chickaRoom0 = new Image();chickaRoom0.src = nill;
 const foxyRoom0 = new Image();foxyRoom0.src = nill;
-let room0Img = new Image();room0Img.src = "./assets/map/rooms/room0dark.png";
+let room0Img = new Image();room0Img.src = "./assets/map/room0dark.png";
 let cameraImg = new Image();cameraImg.src = "./assets/map/rooms/room7.png";
+// po tom co vím jaká blbost byla přepisovat .src v půběhu hry tak ty dveře vytvořím 6-tery
+const door0 = new Image();door0.src = "./assets/map/room0door0.png";
+const door1 = new Image();door1.src = "./assets/map/room0door1.png";
+const door2 = new Image();door2.src = "./assets/map/room0door2.png";
+const door0dark = new Image();door0dark.src = "./assets/map/room0door0dark.png";
+const door1dark = new Image();door1dark.src = "./assets/map/room0door1dark.png";
+const door2dark = new Image();door2dark.src = "./assets/map/room0door2dark.png";
 const fredyCamera = new Image();fredyCamera.src = nill;
 const bonnyCamera = new Image();bonnyCamera.src = nill;
 const chickaCamera = new Image();chickaCamera.src = nill;
@@ -472,16 +477,16 @@ function lights() {
             lightMouse = true;
             if (light) {
                 light = false;
-                room0Img.src = "./assets/map/rooms/room0dark.png";
+                room0Img.src = "./assets/map/room0dark.png";
             } else {
                 light = true;
-                room0Img.src = "./assets/map/rooms/room0light.png";
+                room0Img.src = "./assets/map/room0light.png";
             }
         }
 }else{
     lightMouse = false;
     light = false;
-    room0Img.src = "./assets/map/rooms/room0dark.png";
+    room0Img.src = "./assets/map/room0dark.png";
 }
 }
 function tabletPullup() {
@@ -620,7 +625,7 @@ function tablet(x) {
         if(settingB[3][0][4] == 1)ctx.fillText(Math.round(power) + "%", talbetEdges+10,talbetEdges+talbetCorners-10);
         if( 0 < time[1] && settingB[3][3][4] == 1)ctx.fillText(timeclock, talbetEdges+canvasX/10,talbetEdges+talbetCorners-10);
         ctx.globalAlpha = 0.05; 
-        ctx.fillRect(canvasX-talbetCorners-cameraOffset[0]+cameraOffset[2][0],canvasY-talbetCorners-cameraOffset[1]+cameraOffset[2][1],-canvasX/camSize+cameraOffset[3][0],-canvasY/camSize+cameraOffset[3][1]);
+        ctx.fillRect((cameraOffset[2][0]) / camSize + camPosition[0],(cameraOffset[2][1] - talbetCorners * 2) / camSize + camPosition[1],(cameraOffset[3][0] - cameraOffset[2][0] - talbetCorners * 2) / camSize,(cameraOffset[3][1] - cameraOffset[2][1] - talbetCorners) / camSize);
         ctx.globalAlpha = 1;
         
         jitter();
@@ -710,13 +715,13 @@ let k = 0;
 function endScr(){
     k++;
     if(k>5)location.reload(true);
-
+    
 }
 function win(){
     ctx.clearRect(0, 0, canvasX, canvasY);
-        let winText = "You win       Power status: ";
-        if(power < 0){ winText += "0%";}else{winText += Math.round(power) + "%"}
-
+    let winText = "You win       Power status: ";
+    if(power < 0){ winText += "0%";}else{winText += Math.round(power) + "%"}
+    
     ctx.fillStyle = "#fff";
     ctx.fillText(winText,canvasX/3,canvasY/2)
     pause = true;
@@ -729,67 +734,84 @@ function dies(id){
         const jumpscare = new Image();
         jumpscare.src = EnemakDB[id][0];
         jumpscare.onload = function(){
-        ctx.drawImage(jumpscare,0,0,canvasX,canvasY);
-        ctx.fillStyle = "#111"
-    ctx.fillRect(0,canvasY-canvasY/11,canvasX,-canvasY/10);
-    ctx.fillStyle = "#fff"
-    let dieText = "You died ";
-    if(time[1] != 0){dieText += Math.round(time[0]/time[1]*100) + "% in";}else{
-        dieText += time[0] + " seconds in"
-    }
-
-    dieText += "        Power status: "; 
-    if(power < 0){ dieText += "0%";}else{dieText += Math.round(power) + "%"}
-
-ctx.fillText(dieText,canvasX/5,canvasY-canvasY/10)
-    setInterval(endScr,1000);
-}}}
+            ctx.drawImage(jumpscare,0,0,canvasX,canvasY);
+            ctx.fillStyle = "#111"
+            ctx.fillRect(0,canvasY-canvasY/11,canvasX,-canvasY/10);
+            ctx.fillStyle = "#fff"
+            let dieText = "You died ";
+            if(time[1] != 0){dieText += Math.round(time[0]/time[1]*100) + "% in";}else{
+                dieText += time[0] + " seconds in"
+            }
+            
+            dieText += "        Power status: "; 
+            if(power < 0){ dieText += "0%";}else{dieText += Math.round(power) + "%"}
+            
+            ctx.fillText(dieText,canvasX/5,canvasY-canvasY/10)
+            setInterval(endScr,1000);
+        }}}
 function blackout(){if(power <= 0 && godmode != 1){
-
-        blackoutVar = true;
-        power = 0;
-        cameras = false;
-        for(let i = 0;i<doorlock.length;i++)doorlock[i]=false;
-
-    }}
-    let timeclock = "20:00";
+    
+    blackoutVar = true;
+    power = 0;
+    cameras = false;
+    for(let i = 0;i<doorlock.length;i++)doorlock[i]=false;
+    
+}}
+let timeclock = "20:00";
 function timer(){
     time[0]++;
     if(0 < time[1]){
-    if (time[0] == time[1]){
-        win();
-    }else if(time[0]/time[1]*10 < 3){
-        timeclock = Math.round(time[0]/time[1]*10+20) + ":00 ";
-    }else{
-        timeclock = Math.round(time[0]/time[1]*10-3) + ":00 "
-    }
-
-    
+        if (time[0] == time[1]){
+            win();
+        }else if(time[0]/time[1]*10 < 3){
+            timeclock = Math.round(time[0]/time[1]*10+20) + ":00 ";
+        }else{
+            timeclock = Math.round(time[0]/time[1]*10-3) + ":00 "
+        }
+        
+        
 }}
+function room0(){
+    const upScale = 200;
+    function drawDoorRoom0(x,y,z){
+        if(doorlock[x]){
+        if(light){
+            ctx.drawImage(y, room0camAngle, -upScale, canvasX * 2, canvasY+upScale)
+        }else{
+            ctx.drawImage(z, room0camAngle, -upScale, canvasX * 2, canvasY+upScale)
+        }
+        }
+    }
+    ctx.drawImage(room0Img, room0camAngle, -upScale, canvasX * 2, canvasY+upScale);
+    drawEnemyRoom0();
+    drawDoorRoom0(0,door0,door0dark);
+    drawDoorRoom0(1,door1,door1dark);
+    drawDoorRoom0(2,door2,door2dark);
+    butonDraw();
+}
+
 function render() {
     if(!pause){
     ctx.clearRect(0, 0, canvasX, canvasY);
-    ctx.drawImage(room0Img, room0camAngle, 0, canvasX * 2, canvasY);
+    room0();
 
-        if(settingB[3][2][4] == 1)ctx.drawImage(guiTablet, 0, 0, canvasX, canvasY);
-        butonDraw();
-        drawEnemyRoom0();
-        
-        blackout();
-        tabletPullup();
-        lights();
-        tablet(cameras);
-
-
-
-        if (debug == true) {
-            debugging();
-        }
-
+    
+    if(settingB[3][2][4] == 1)ctx.drawImage(guiTablet, 0, 0, canvasX, canvasY);
+    tabletPullup();
+    lights();
+    tablet(cameras);
+    
+    
+    
+    if (debug == true) {
+        debugging();
+    }
+    
 }}
 
 function ubdate() {
     if(!pause){
+    blackout();
     powerC();
     fredy.movmentOpportunityFredy();
     chicka.movmentOpportunity();
