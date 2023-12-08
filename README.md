@@ -93,7 +93,19 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `buttonDraw()` - vykresluje tlačítka od dveří <br>
 `doorlocking(x)` - měmní booleany v array `doorlock` podle x<br>
 `doors()` - kontroluje na které tlačíto dveří klikáte a zpouští funkci `doorlocking(x)` s danými dveřmi <br>
-`lights()` - 
+`lights()` - zapíná/vipíná světla a odečítá od `power` <br>
+`tabletPullup()` - zapíní/vipíná tablet a kontroluje jesli u vypínání není myš na kamerách <br>
+`enemyCamRender(x)` - zkontoluje jaký nepřátelé se necházejí ve aktuálně vybrané místosti a vyrendruje je (jestli tam nejsou použije `nill`<br>
+`roomsDraw(x)` - vykresluje minimapu na tabletu, zároveň při čemž kontoroluje myš jestli není na některé z těchle oken a změní sorce path `cameraImg` podle toho   <br>
+  -  `enemyDebug()` - jestli je zapnutý `debug` přebarvý danou mísnost podle zadaných hodnot <br>
+
+`jitter()` - při najetí na kameru na několik framů zobrazjí digitální šum <br>
+`tablet()` - zpouští ostatní funkce a vyhresluje se <br>
+`debugging()` - vykreslí malý pointer na obrazovce <br>
+`powerC()` - odečte danou energii od `power`<br>
+`drawEnemyRoom0()` - vykreslí nepřátele v hlavní mísnosti jesli sou zaplá světla <br>
+`backout() ` - impulzní funkce co vypne všechy elektricky náročné proměné<br>
+
 ### menu
 `mainMenu()` - velký switch s různýma stranama hlavního menu (kdybych tou dobou měl oběkty bylo by to přez oběkty) <br>
   case 0 - první stránka co uvidíte při načtení indexu <br>
