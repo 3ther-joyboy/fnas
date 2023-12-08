@@ -98,7 +98,20 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
   case 3 - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset` <br>
   case 4 - [Custom] forloopy co měří `settingB` velikost a zakreslují podle toho do canvasu <br>
 
-`variablerefresh()` nastavý `settingB[4]` na určené hodnoty (`fredy.info.anger`,`bonny.info.anger`,`chicka.info.anger`, `foxy.info.anger`, `lightLoss`, `doorLoss`, `tabletPullupLoss`, `powerloss`, `power`, `ubdateSpeed`, `renderSpeed`, `time[1]`, `godmode`) <br>
+`variablerefresh()` nastavý `settingB[4]` na určené hodnoty: 
+  -  `fredy.info.anger`
+  -  `bonny.info.anger`
+  -  `chicka.info.anger`
+  -  `foxy.info.anger`
+  -  `lightLoss`
+  -  `doorLoss`
+  -  `tabletPullupLoss`
+  -  `powerloss`
+  -  `power`
+  -  `ubdateSpeed`
+  -  `renderSpeed`
+  -  `time[1]`
+  -  `godmode` <br>
 `mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
 ### class enemak
 `attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
