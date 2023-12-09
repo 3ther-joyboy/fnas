@@ -1,7 +1,7 @@
 # Five Nights at Sorce
 **Klauzurní práce *2023/24*** <br>
 **2. ročník 1. pololetí** <br>
-**Studijní předmět:** *Programovací jazyk JavaScriptk* <br>
+**Studijní předmět:** *Programovací jazyk JavaScript* <br>
 ## Programy
 Programy, které byly využity pro tyto klauzury, na naprogramování téhle hry jsou:
 -	[VS Code](https://code.visualstudio.com/) – psaní kódu 
