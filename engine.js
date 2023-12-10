@@ -201,7 +201,7 @@ let power = 100;
 let tabletPullupLoss = 20;
 let light = false;
 let lightMouse = false;
-let doorButons = [75,130,canvasY/3,110];
+let doorButons = [75,130,canvasY/2+50,100];
 let doorlock = [false,false,false];
 
 let doorLoss = 10;
@@ -661,12 +661,13 @@ window.addEventListener("keydown", (event) => {
     }
     switch (event.which) {
         case 32:
+            if(!blackoutVar){
             if (cameras) {
                 cameras = false;
             }else{
                 cameras = true;
                 power-=tabletPullupLoss;
-            }
+            }}
             ; break;
         case 80:
                 pause == true ? pause = false :pause =  true;
@@ -687,7 +688,7 @@ function powerC(){
     }
 
 }
-function drawEnemyRoom0(){
+function drawEnemyRoom0(z){
     if(light){
         switch(fredy.info.position){
                 case (15 * !doorlock[0]):case (1 * !doorlock[1]):case (2 * !doorlock[2]):  fredyRoom0.src = EnemakDB[0][fredy.info.position]; 
@@ -705,10 +706,13 @@ function drawEnemyRoom0(){
                 case (15 * !doorlock[0]):case (1 * !doorlock[1]):case (2 * !doorlock[2]):  foxyRoom0.src = EnemakDB[3][foxy.info.position]; 
                     ;break;case 0: foxyRoom0.src = EnemakDB[3][foxy.info.position];break;default:foxyRoom0.src = nill;
         }
-        ctx.drawImage(fredyRoom0,   room0camAngle, 0, canvasX * 2, canvasY);
-        ctx.drawImage(chickaRoom0,  room0camAngle, 0, canvasX * 2, canvasY);
-        ctx.drawImage(bonnyRoom0,   room0camAngle, 0, canvasX * 2, canvasY);
-        ctx.drawImage(foxyRoom0,    room0camAngle, 0, canvasX * 2, canvasY);
+        function enemy0(x){
+            ctx.drawImage(x, room0camAngle, z[1]-z[0], canvasX * 2, canvasY+z[0]);
+        }
+        enemy0(fredyRoom0);
+        enemy0(chickaRoom0);
+        enemy0(bonnyRoom0);
+        enemy0(foxyRoom0);
     }
 }
 let k = 0;
@@ -772,31 +776,57 @@ function timer(){
         
 }}
 function room0(){
-    const upScale = 200;
+    const upScale = [300,250];
     function drawDoorRoom0(x,y,z){
         if(doorlock[x]){
         if(light){
-            ctx.drawImage(y, room0camAngle, -upScale, canvasX * 2, canvasY+upScale)
+            ctx.drawImage(y, room0camAngle, upScale[1]-upScale[0], canvasX * 2, canvasY+upScale[0])
         }else{
-            ctx.drawImage(z, room0camAngle, -upScale, canvasX * 2, canvasY+upScale)
+            ctx.drawImage(z, room0camAngle, upScale[1]-upScale[0], canvasX * 2, canvasY+upScale[0])
         }
         }
     }
-    ctx.drawImage(room0Img, room0camAngle, -upScale, canvasX * 2, canvasY+upScale);
-    drawEnemyRoom0();
+    ctx.drawImage(room0Img, room0camAngle, upScale[1]-upScale[0], canvasX * 2, canvasY+upScale[0]);
+    drawEnemyRoom0(upScale);
     drawDoorRoom0(0,door0,door0dark);
     drawDoorRoom0(1,door1,door1dark);
     drawDoorRoom0(2,door2,door2dark);
     butonDraw();
 }
-
+function gui(){
+    const x = 20;
+    const z = [canvasX/tabletTriger,canvasY/tabletUpTriger];
+    const arrow = [[-1,0],[-1,0.5],[0.5,0.5],[0.5,1],[1.5,0]];
+    const camera = [[-1,0],[-1,0.5],[0.5,0.5],[0.5,0],[1,0.5],[1,0]];
+    function poliRender(size,rotation,offset,object){
+        ctx.fillStyle = "#fff";
+        ctx.beginPath();
+        ctx.moveTo(object[0][0]*rotation*size+offset[0],offset[1]+object[0][1]*size);
+        for(let i = 1;i<object.length;i++){
+            ctx.lineTo(object[i][0]*rotation*size+offset[0],offset[1]+object[i][1]*size);
+        }
+        for(let i = object.length-1;i>0;i--){
+            ctx.lineTo(object[i][0]*rotation*size+offset[0],offset[1]+object[i][1]*(-size));
+        }
+        ctx.closePath();
+        ctx.fill();
+    }
+    poliRender(50,-1,[z[0]-200,canvasY/2],arrow);
+    poliRender(50,1,[canvasX-z[0]+200,canvasY/2],arrow);
+    poliRender(50,1,[canvasX/2,canvasY-z[1]/2],camera)
+    ctx.fillStyle = "#fff";
+    for(let i = 0;i<x;i++){
+        ctx.fillRect(z[0],z[1]+i*((canvasY-2*z[1])/x),5,(canvasY-2*z[1])/(2*x));
+        ctx.fillRect(canvasX-z[0],z[1]+i*((canvasY-2*z[1])/x),5,(canvasY-2*z[1])/(2*x));
+        ctx.fillRect(z[0]+i*((canvasX-2*z[0])/x),z[1],(canvasX-2*z[0])/(2*x),5);
+        ctx.fillRect(z[0]+i*((canvasX-2*z[0])/x),canvasY-z[1],(canvasX-2*z[0])/(2*x),5);
+    }
+}
 function render() {
     if(!pause){
     ctx.clearRect(0, 0, canvasX, canvasY);
     room0();
-
-    
-    if(settingB[3][2][4] == 1)ctx.drawImage(guiTablet, 0, 0, canvasX, canvasY);
+    gui();
     tabletPullup();
     lights();
     tablet(cameras);
