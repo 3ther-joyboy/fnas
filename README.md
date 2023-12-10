@@ -71,11 +71,11 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
   -  `room0Img`, `cameraImg` - render příšlusících místností <br>
   -  `fredyCamera`, `bonnyCamera`, `chickaCamera`, `foxyCamera` - render nepřátel na kamerách <br>
 #### enemies
-`enemak` - class nepřátel
-  - `fredy`
-  - `bonny`
-  - `chicka`
-  - `foxy` <br>
+  -  `enemak` - class nepřátel
+    - `fredy`
+    - `bonny`
+    - `chicka`
+    - `foxy` <br>
   
 `this.info.id` - id (například na první index `EnemakDB`)<br>
 `this.info.position` - pozice <br>
