@@ -86,13 +86,13 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 ## Funkce
 ### game
 #### rendering
-`render()` - opakovaně se volá a spouští ostatní rendrovací funkce <br> 
-`debugging()` - vykreslí malý pointer na obrazovce <br>
-`endSrc()` přičte ke `k` 1 a jestli bude vyčí jak 5 restartuje stránku <br>
-`gui()` - vykreslování dodatečných informací jako kde se zapínají kamery/světla a se rozhlíží <br>
-  -  `poliRender` - z arraye vykreslí vrchní polovinu obrazce kterou poté ozrcadlí podél X <br>
+  -  `render()` - opakovaně se volá a spouští ostatní rendrovací funkce <br> 
+  -  `debugging()` - vykreslí malý pointer na obrazovce <br>
+- `endSrc()` přičte ke `k` 1 a jestli bude vyčí jak 5 restartuje stránku <br>
+- `gui()` - vykreslování dodatečných informací jako kde se zapínají kamery/světla a se rozhlíží <br>
+  -    `poliRender` - z arraye vykreslí vrchní polovinu obrazce kterou poté ozrcadlí podél X <br>
 
-`buttonDraw()` - vykresluje tlačítka od dveří <br>
+- `buttonDraw()` - vykresluje tlačítka od dveří <br>
 
 `tablet()` - zpouští ostatní funkce a vyhresluje se <br>
 `roomsDraw(x)` - vykresluje minimapu na tabletu, zároveň při čemž kontoroluje myš jestli není na některé z těchle oken a změní sorce path `cameraImg` podle toho   <br>
