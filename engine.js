@@ -12,7 +12,7 @@ const pointersize = 20;
 const pointerspeed = 10;
 
 let renderSpeed = 10;
-let ubdateSpeed = 100;
+let updateSpeed = 100;
 
 let mousePosition = [0, 0];
 window.addEventListener("mousemove", (event) => {
@@ -83,7 +83,7 @@ function variablerefresh(){
     powerloss =         settingB[1][3][4]*settingB[1][3][3];
 
     power =             settingB[2][0][4]*settingB[2][0][3];
-    ubdateSpeed =       settingB[2][1][4]*settingB[2][1][3];
+    updateSpeed =       settingB[2][1][4]*settingB[2][1][3];
     renderSpeed =       settingB[2][2][4]*settingB[2][2][3];
     time[1] =           settingB[2][3][4]*settingB[2][3][3];
 
@@ -147,7 +147,7 @@ function mainMenu(){
         };
         break;
         case 1:
-        setInterval(ubdate, ubdateSpeed);
+        setInterval(update, updateSpeed);
         setInterval(render, renderSpeed);
         setInterval(timer, 1000);
         clearInterval(mainMenuId);
@@ -270,7 +270,7 @@ const menuBacground = new Image(); menuBacground.src = "./assets/mainMenu.gif";
 class enemak {
     constructor(info) {
         this.info = info;
-        this.ubdate = { now: 0, max: 10 + (Math.random() * 10) };
+        this.update = { now: 0, max: 10 + (Math.random() * 10) };
         this.camerastun = 0;
     }
     
@@ -281,6 +281,7 @@ if(rand < 30 && !doorlock[x]){
     this.info.position = 0;
     dies(this.info.id);
 }else{
+    if(doorlock[x])
     switch(Math.floor(Math.random() * 4)){
         case 0:  this.info.position = 7;break;
         case 1:  this.info.position = 8;break;
@@ -291,10 +292,10 @@ if(rand < 30 && !doorlock[x]){
 }}
 
     movmentOpportunityFoxy() {
-        this.ubdate.now += 1;
+        this.update.now += 1;
         if(this.camerastun > 0)this.camerastun--;
         const movopprand = Math.floor(Math.random() * 20);
-        if (movopprand < this.info.anger && this.ubdate.now >= this.ubdate.max && this.camerastun <= 0) {
+        if (movopprand < this.info.anger && this.update.now >= this.update.max && this.camerastun <= 0) {
 
                 switch (this.info.position) {
                     case 10: this.info.position = 8;
@@ -317,12 +318,12 @@ if(rand < 30 && !doorlock[x]){
                     default:
             }
         }
-        if (this.ubdate.now >= this.ubdate.max) this.ubdate.now = 0
+        if (this.update.now >= this.update.max) this.update.now = 0
     }
     movmentOpportunityFredy() {
-        this.ubdate.now += 1;
-        if (this.ubdate.now >= this.ubdate.max) {
-            this.ubdate.now = 0;
+        this.update.now += 1;
+        if (this.update.now >= this.update.max) {
+            this.update.now = 0;
             const movopprand = Math.floor(Math.random() * 20);
             if (this.info.anger > movopprand) {
                 const rand = Math.floor(Math.random() * 16);
@@ -339,15 +340,15 @@ if(rand < 30 && !doorlock[x]){
                             this.info.position = rand;
                         }
                 } else {
-                    if(Math.floor(Math.random() * 3)==0)this.attack(this.info.position);
+                    if(Math.floor(Math.random() * 2)==1)this.attack(this.info.position);
                 }
             }
         }
     }
     movmentOpportunity() {
-        this.ubdate.now += 1;
-        if (this.ubdate.now >= this.ubdate.max) {
-            this.ubdate.now = 0;
+        this.update.now += 1;
+        if (this.update.now >= this.update.max) {
+            this.update.now = 0;
             const movopprand = Math.floor(Math.random() * 20);
             if (this.info.anger > movopprand) {
 
@@ -698,7 +699,7 @@ function debugging() {
 function powerC(){
     power -= powerloss;
     if(doorlock[0]||doorlock[1]||doorlock[2]){
-        power -= (doorlock[0]+doorlock[1]+doorlock[2])*doorLoss*ubdateSpeed/1000;
+        power -= (doorlock[0]+doorlock[1]+doorlock[2])*doorLoss*updateSpeed/1000;
     }
 
 }
@@ -807,6 +808,7 @@ function room0(){
     butonDraw();
 }
 function gui(){
+    if(settingB[3][2][4] == 1){
     const x = 20;
     const z = [canvasX/tabletTriger,canvasY/tabletUpTriger];
     const arrow = [[-1,0],[-1,0.5],[0.5,0.5],[0.5,1],[1.5,0]];
@@ -839,7 +841,7 @@ function gui(){
         ctx.fillRect(z[0]+i*((canvasX-2*z[0])/x),z[1],(canvasX-2*z[0])/(2*x),5);
         ctx.fillRect(z[0]+i*((canvasX-2*z[0])/x),canvasY-z[1],(canvasX-2*z[0])/(2*x),5);
     }
-}
+}}
 function render() {
     if(!pause){
     ctx.clearRect(0, 0, canvasX, canvasY);
@@ -854,7 +856,7 @@ function render() {
     }
 }}
 
-function ubdate() {
+function update() {
     if(!pause){
     blackout();
     powerC();
