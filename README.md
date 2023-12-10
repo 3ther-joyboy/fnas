@@ -77,12 +77,12 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
       -   `chicka`
       -   `foxy` <br>
   
-  -      `this.info.id` - id (například na první index `EnemakDB`)<br>
-  -      `this.info.position` - pozice <br>
-  -      `this.info.anger` - pravděpodobnost na akci <br>
-  -      `this.ubdate.now` - aktuální průběh ubdatu <br>
-  -      `this.ubdate.max` - podmínka zpuštění ubdatu <br>
-  -      `this.camerastun` - ohromení z kamer (pouze u `foxy`) <br>
+  - `this.info.id` - id (například na první index `EnemakDB`)<br>
+  - `this.info.position` - pozice <br>
+  - `this.info.anger` - pravděpodobnost na akci <br>
+  - `this.ubdate.now` - aktuální průběh ubdatu <br>
+  - `this.ubdate.max` - podmínka zpuštění ubdatu <br>
+  - `this.camerastun` - ohromení z kamer (pouze u `foxy`) <br>
 ## Funkce
 ### game
 #### rendering
