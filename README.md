@@ -129,7 +129,6 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 
 -  `variablerefresh()` přepíše proměné proměnýma z `settingB[4]` <br> 
 
--  `camPositionRefresh()` - stejné jak `variablerefresh()`, jen platí pouze pro
-  -     `camPosition` <br>
+-  `camPositionRefresh()` - stejné jak `variablerefresh()`, jen platí pouze pro `camPosition` <br>
  
 -  `mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
