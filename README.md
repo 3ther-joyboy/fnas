@@ -28,48 +28,48 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 # Kód
 ## variables / constants / objects
 ### canvas
-`canvasX canvasY` - poměry stran v "`ctx`" unitech <br> 
-`canvas` - odkaz na element v html <br>
-`ctx` - vytvoří z `canvas` [2D rendering objekt](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) <br>
-`renderSpeed` - kolik milisekund bude mezi každým framem <br>
-`ubdateSpeed` - kolik milisekund bude mezi každým ubdatem <br>
-`moseposition` - array který uchovává x a y souřadnice kurzoru <br>
+  -  `canvasX canvasY` - poměry stran v "`ctx`" unitech <br> 
+  -  `canvas` - odkaz na element v html <br>
+  -  `ctx` - vytvoří z `canvas` [2D rendering objekt](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) <br>
+  -  `renderSpeed` - kolik milisekund bude mezi každým framem <br>
+  -  `ubdateSpeed` - kolik milisekund bude mezi každým ubdatem <br>
+  -  `moseposition` - array který uchovává x a y souřadnice kurzoru <br>
 ### debug
-`debug` - boolean debug <br>
-`pointerpos` - array který uchovává x a y souřadnice debug kurzoru <br>
+  -  `debug` - boolean debug <br>
+  -  `pointerpos` - array který uchovává x a y souřadnice debug kurzoru <br>
 ### menu
-`buttonsMM` - velikost, barva, text a font tlačítek v menu <br>
-`settingB` - jméno, minimální, maximální hodnota, násobič a aktuální hodnota proměné v custom <br>
-`settingS` - vyhodnocování slideru v settings <br>
-`mM` - status menu (jestli je vybraný tutorial, settings, custom nebo samotné menu) <br>
-`mainMenuId` - id setIntervalu spravující rendering menu <br>
+  -  `buttonsMM` - velikost, barva, text a font tlačítek v menu <br>
+  -  `settingB` - jméno, minimální, maximální hodnota, násobič a aktuální hodnota proměné v custom <br>
+  -  `settingS` - vyhodnocování slideru v settings <br>
+  -  `mM` - status menu (jestli je vybraný tutorial, settings, custom nebo samotné menu) <br>
+  -  `mainMenuId` - id setIntervalu spravující rendering menu <br>
 ### game
-`time` - array s aktuálním časem a časem finálním <br>
-`godmode` - boolean nesmrtelnost <br>
-`power` - energie <br>
-`blackoutVar` - boolean když je `power` na 0  <br>
-`tabletPullupLoss`, `doorLoss`, `lightLoss`, `powerloss` - stráty energie <br>doorlock
-`doorlock` - array se stavy dveří <br>
+  -  `time` - array s aktuálním časem a časem finálním <br>
+  -  `godmode` - boolean nesmrtelnost <br>
+  -  `power` - energie <br>
+  -  `blackoutVar` - boolean když je `power` na 0  <br>
+  -  `tabletPullupLoss`, `doorLoss`, `lightLoss`, `powerloss` - stráty energie <br>doorlock
+  -  `doorlock` - array se stavy dveří <br>
 #### tablet
-`cameraOffset` - off set kamer a resize background kamer <br>
-`cameraSelect` - aktuálně vybraná kamera <br>
-`tabletUpTrigger` - do spodní kolikatiny se zpustí tablet <br>
-`cameras` - boolean zapnutých kamer <br>
-`tabletCorners` - kolik `ctx` unit má tablet vynecháno od okraje obrazovky <br>
-`tabletEdges` - kolik `ctx` unit má obrazovka tabletu vynecháno od okraje tabletu <br>
-`camSize` - velikost kamer <br>
-`room0camAngle` - "úhel" v hlavní místnosti u koukání do leva/prava <br>
-`roomPosition` - opzice kamer na minimapě v `ctx` unitách <br>
-`chodbyThicc` - šířka chodeb na kamerách v `ctx` unitách <br>
+  -  `cameraOffset` - off set kamer a resize background kamer <br>
+  -  `cameraSelect` - aktuálně vybraná kamera <br>
+  -  `tabletUpTrigger` - do spodní kolikatiny se zpustí tablet <br>
+  -  `cameras` - boolean zapnutých kamer <br>
+  -  `tabletCorners` - kolik `ctx` unit má tablet vynecháno od okraje obrazovky <br>
+  -  `tabletEdges` - kolik `ctx` unit má obrazovka tabletu vynecháno od okraje tabletu <br>
+  -  `camSize` - velikost kamer <br>
+  -  `room0camAngle` - "úhel" v hlavní místnosti u koukání do leva/prava <br>
+  -  `roomPosition` - opzice kamer na minimapě v `ctx` unitách <br>
+  -  `chodbyThicc` - šířka chodeb na kamerách v `ctx` unitách <br>
 #### assets
-`nill` - sorce cesta k transparentímu 1x1 px obrázku <br>
-`EnemakDB` - 2 dimenzionalni array s sorce cestamy k určitým obrázků nepřátel <br>
-`guiTablet` - jednoduchý gui pro ukázku ovládání <br>
-`guiJitter` - šum u měnění kamer <br>
-`testImg` - testovací obrázek <br>
-`fredyRoom0`, `bonnyRoom0`, `chickaRoom0`, `foxyRoom0` - render nepřátel v hlavní místnosti<br>
-`room0Img`, `cameraImg` - render příšlusících místností <br>
-`fredyCamera`, `bonnyCamera`, `chickaCamera`, `foxyCamera` - render nepřátel na kamerách <br>
+  -  `nill` - sorce cesta k transparentímu 1x1 px obrázku <br>
+  -  `EnemakDB` - 2 dimenzionalni array s sorce cestamy k určitým obrázků nepřátel <br>
+  -  `guiTablet` - jednoduchý gui pro ukázku ovládání <br>
+  -  `guiJitter` - šum u měnění kamer <br>
+  -  `testImg` - testovací obrázek <br>
+  -  `fredyRoom0`, `bonnyRoom0`, `chickaRoom0`, `foxyRoom0` - render nepřátel v hlavní místnosti<br>
+  -  `room0Img`, `cameraImg` - render příšlusících místností <br>
+  -  `fredyCamera`, `bonnyCamera`, `chickaCamera`, `foxyCamera` - render nepřátel na kamerách <br>
 #### enemies
 `enemak` - class nepřátel
   - `fredy`
