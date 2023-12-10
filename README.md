@@ -94,56 +94,55 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 
 - `buttonDraw()` - vykresluje tlačítka od dveří <br>
 
-`tablet()` - zpouští ostatní funkce a vyhresluje se <br>
-`roomsDraw(x)` - vykresluje minimapu na tabletu, zároveň při čemž kontoroluje myš jestli není na některé z těchle oken a změní sorce path `cameraImg` podle toho   <br>
-  -  `enemyDebug()` - jestli je zapnutý `debug` přebarvý danou mísnost podle zadaných hodnot <br>
+- `tablet()` - zpouští ostatní funkce a vyhresluje se <br>
+- `roomsDraw(x)` - vykresluje minimapu na tabletu, zároveň při čemž kontoroluje myš jestli není na některé z těchle oken a změní sorce path `cameraImg` podle toho   <br>
+  -    `enemyDebug()` - jestli je zapnutý `debug` přebarvý danou mísnost podle zadaných hodnot <br>
   
-`jitter()` - při najetí na kameru na několik framů zobrazjí digitální šum <br>
-`enemyCamRender(x)` - zkontoluje jaký nepřátelé se necházejí ve aktuálně vybrané místosti a vyrendruje je (jestli tam nejsou použije `nill`<br>
-`drawEnemyRoom0()` - vykreslí nepřátele v hlavní mísnosti jesli sou zaplá světla <br>
-  -  `enemy0` - aplykuje požadovaný scale na obrázky <br>
+- `jitter()` - při najetí na kameru na několik framů zobrazjí digitální šum <br>
+- `enemyCamRender(x)` - zkontoluje jaký nepřátelé se necházejí ve aktuálně vybrané místosti a vyrendruje je (jestli tam nejsou použije `nill`<br>
+- `drawEnemyRoom0()` - vykreslí nepřátele v hlavní mísnosti jesli sou zaplá světla <br>
+  -    `enemy0` - aplykuje požadovaný scale na obrázky <br>
   
 #### logick
-`ubdate()` - opakovaně se volá a spouští funkce na pohib nepřátel a vyhodnocení energie<br>
-`win()` printne výherní zprávu a kolik `power` vám zůstalo<br>
-`dies()` printne proherní zprávu kolik `power` a jak daleko jste se dostaly<br>
-`doorlocking(x)` - měmní booleany v array `doorlock` podle x<br>
-`doors()` - kontroluje na které tlačíto dveří klikáte a zpouští funkci `doorlocking(x)` s danými dveřmi <br>
-`lights()` - zapíná/vipíná světla a odečítá od `power` <br>
-`tabletPullup()` - zapíní/vipíná tablet a kontroluje jesli u vypínání není myš na kamerách <br>
-`powerC()` - odečte danou energii od `power`<br>
-`blackout()` - impulzní funkce co vypne všechy elektricky náročné proměné<br>
+- `ubdate()` - opakovaně se volá a spouští funkce na pohib nepřátel a vyhodnocení energie<br>
+- `win()` printne výherní zprávu a kolik `power` vám zůstalo<br>
+- `dies()` printne proherní zprávu kolik `power` a jak daleko jste se dostaly<br>
+- `doorlocking(x)` - měmní booleany v array `doorlock` podle x<br>
+- `doors()` - kontroluje na které tlačíto dveří klikáte a zpouští funkci `doorlocking(x)` s danými dveřmi <br>
+- `lights()` - zapíná/vipíná světla a odečítá od `power` <br>
+- `tabletPullup()` - zapíní/vipíná tablet a kontroluje jesli u vypínání není myš na kamerách <br>
+- `powerC()` - odečte danou energii od `power`<br>
+- `blackout()` - impulzní funkce co vypne všechy elektricky náročné proměné<br>
 ##### class enemak
-`attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
-`movmentOpportunityFoxy()` - zařizuje pohyb `foxy` po předdefinované trase a nedovoluje mu pohnout se dokut není `this.camerastun` na 0 <br>
-`movmentOpportunityFredy()` - pohyb po mapě `fredy` který se náhodně teleportuje a je šance 1/15 že zaujme útočnou pozici před dveřmy <br>
-`movmentOpporuniy()` - lyneární pohyb mapě pro `bonny`, `chicka` s procentáží na rozhodování <br>
+- `attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
+- `movmentOpportunityFoxy()` - zařizuje pohyb `foxy` po předdefinované trase a nedovoluje mu pohnout se dokut není `this.camerastun` na 0 <br>
+- `movmentOpportunityFredy()` - pohyb po mapě `fredy` který se náhodně teleportuje a je šance 1/15 že zaujme útočnou pozici před dveřmy <br>
+- `movmentOpporuniy()` - lyneární pohyb mapě pro `bonny`, `chicka` s procentáží na rozhodování <br>
 
 ### menu
-`mainMenu()` - velký switch s různýma stranama hlavního menu (kdybych tou dobou měl oběkty bylo by to přez oběkty) <br>
-  case 0 - první stránka co uvidíte při načtení indexu <br>
-  case 1 - [Play] clearne interval s `mainMenu()` funkcí a zpustí `ubdate()`, `render()`, `timer()` do příslušících intervalů <br>
-  case 2 - [Tutorial] listuje arrayem png <br>
-  case 3 - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset` <br>
-  case 4 - [Custom] vykreslí všechny tlačítka z  `settingB` a pomocí `.length` spočítá na kolikatiny má rozdělit `canvasX/Y`  <br>
+- `mainMenu()` - velký switch s různýma stranama hlavního menu (kdybych tou dobou měl oběkty bylo by to přez oběkty) <br>
+  -    case 0 - první stránka co uvidíte při načtení indexu <br>
+  -    case 1 - [Play] clearne interval s `mainMenu()` funkcí a zpustí `ubdate()`, `render()`, `timer()` do příslušících intervalů <br>
+  -    case 2 - [Tutorial] listuje arrayem png <br>
+  -    case 3 - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset` <br>
+  -    case 4 - [Custom] vykreslí všechny tlačítka z  `settingB` a pomocí `.length` spočítá na kolikatiny má rozdělit `canvasX/Y`  <br>
 
-`variablerefresh()` nastavý `settingB[4]` na určené hodnoty: 
-  -  `fredy.info.anger`
-  -  `bonny.info.anger`
-  -  `chicka.info.anger`
-  -  `foxy.info.anger`
-  -  `lightLoss`
-  -  `doorLoss`
-  -  `tabletPullupLoss`
-  -  `powerloss`
-  -  `power`
-  -  `ubdateSpeed`
-  -  `renderSpeed`
-  -  `time[1]`
-  -  `godmode` <br>
+-  `variablerefresh()` nastavý `settingB[4]` na určené hodnoty: 
+  -    `fredy.info.anger`
+  -    `bonny.info.anger`
+  -    `chicka.info.anger`
+  -    `foxy.info.anger`
+  -    `lightLoss`
+  -    `doorLoss`
+  -    `tabletPullupLoss`
+  -    `powerloss`
+  -    `power`
+  -    `ubdateSpeed`
+  -    `renderSpeed`
+  -    `time[1]`
+  -    `godmode` <br>
 
-`camPositionRefresh()` - stejné jak `variablerefresh()`, jen platí pouze pro
-  - `camPosition` <br>
+-  `camPositionRefresh()` - stejné jak `variablerefresh()`, jen platí pouze pro
+  -   `camPosition` <br>
  
-`mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
-
+-  `mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
