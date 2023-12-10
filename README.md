@@ -127,20 +127,7 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
   -    case 3 - [Settings] zpouští `tablet(true)` a pomocí slideru měmní `camSize` a `cameraOffset` <br>
   -    case 4 - [Custom] vykreslí všechny tlačítka z  `settingB` a pomocí `.length` spočítá na kolikatiny má rozdělit `canvasX/Y`  <br>
 
--  `variablerefresh()` nastavý `settingB[4]` na určené hodnoty: 
-  -    `fredy.info.anger`
-  -    `bonny.info.anger`
-  -    `chicka.info.anger`
-  -    `foxy.info.anger`
-  -    `lightLoss`
-  -    `doorLoss`
-  -    `tabletPullupLoss`
-  -    `powerloss`
-  -    `power`
-  -    `ubdateSpeed`
-  -    `renderSpeed`
-  -    `time[1]`
-  -    `godmode` <br>
+-  `variablerefresh()` přepíše proměné proměnýma z `settingB[4]` <br> 
 
 -  `camPositionRefresh()` - stejné jak `variablerefresh()`, jen platí pouze pro
   -   `camPosition` <br>
