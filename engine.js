@@ -43,26 +43,26 @@ window.addEventListener("click", (event) => {
 const buttonsMM = [
     //  [x, y, y1,barva] boužel nekonzistentí arraye
     [200,300,410,"#f31","Start","100px Arial"],
-    [150,450,550,"#f50","Tutorial","70px Arial"],
+    [150,450,550,"#f50","Manual","70px Arial"],
     [120,600,670,"#0f0","Settings","51px Arial"],
     [120,700,770,"#0ff","Custom","51px Arial"],
 ];
 let settingB =[
 [
     ["Hevy",0,10,1,5],
-    ["Solidger",0,10,1,3],
+    ["Solidger",0,10,1,2],
     ["Demo",0,10,1,3],
-    ["Scout",0,10,1,2],
+    ["Scout",0,10,1,5],
 ],[
     ["Light Loss",0,100,0.1,1],
-    ["Door Loss",0,100,0.1,5],
-    ["Tablet Loss",0,100,0.1,20],
+    ["Door Loss",0,100,0.1,4],
+    ["Tablet Loss",0,100,0.1,15],
     ["Constant",0,100,0.05,0],
 ],[
     ["Power",0,100,10,10],
     ["Update speed [ms]",1,100,100,3],
     ["Render speed [ms]",1,100,1,10],
-    ["Time [S]",0,100,10,12],
+    ["Time [S]",0,100,10,18],
 ],[
     ["Batery show",0,1,1,1],
     ["God mode",0,1,1,0],
@@ -91,6 +91,8 @@ function variablerefresh(){
 }
     switch(mM[0]){
         case 0: if(mM[1]!=undefined){mM[0] = 1+mM[1]; variablerefresh()}break;
+        case 2: (mousePosition[0]<300 && mousePosition[1] > canvasY - 100) ? mM[0]=0 : tut = !tut;
+        ;break;
         case 3: if( mousePosition[1] > 75 && mousePosition[1] < 125 && mousePosition[0] > canvasX-(camSize*canvasX/2.5+25)+50 && mousePosition[0] < canvasX-(camSize*canvasX/2.5-25)+50 ){
             settingS[0] = !settingS[0];
         }else{
@@ -121,6 +123,7 @@ function variablerefresh(){
 
 let settingS = [false,[0,0,false]]
 let mM = [0,0];
+let tut = false;
 function mainMenu(){
     ctx.clearRect(0, 0, canvasX, canvasY);
     switch(mM[0]){
@@ -149,7 +152,17 @@ function mainMenu(){
         setInterval(timer, 1000);
         clearInterval(mainMenuId);
         break;
-        case 2:break;
+        case 2:
+            function tutori(object){
+                ctx.drawImage(object,0,0,canvasX,canvasY)    
+            }
+            tut ? tutori(tutorial1) : tutori(tutorial2);
+            ctx.fillStyle = "#f00";
+            ctx.fillRect(0,canvasY,300,-100);
+            ctx.fillStyle = "#000";
+            ctx.font = "80px Arial";
+            ctx.fillText("Back",10,canvasY-10);
+        ;break;
         case 3:
             tablet(true);
             ctx.fillStyle = "#f00";
@@ -217,7 +230,7 @@ const tabletTriger = 4;
 let cameras = false;
 const talbetCorners = 50;
 const talbetEdges = 30;
-let camSize = 2;
+let camSize = 2.3;
 let room0camAngle = -(canvasX / 2);
 
 // imgs
@@ -249,9 +262,9 @@ const bonnyCamera = new Image();bonnyCamera.src = nill;
 const chickaCamera = new Image();chickaCamera.src = nill;
 const foxyCamera = new Image();foxyCamera.src = nill;
 
+const tutorial1 = new Image();tutorial1.src = "./assets/tutorialPng/tutorial1.png"
+const tutorial2 = new Image();tutorial2.src = "./assets/tutorialPng/tutorial2.png"
 const menuBacground = new Image(); menuBacground.src = "./assets/mainMenu.gif";
-menuBacground.autoplay = true;
-menuBacground.loop = true;
 
 // =============================== enemies =============================
 class enemak {
@@ -262,12 +275,13 @@ class enemak {
     }
     
     attack(x){
+        if(x==15)x=0;
         const rand = Math.random() * 100;
 if(rand < 30 && !doorlock[x]){
     this.info.position = 0;
     dies(this.info.id);
 }else{
-    switch(Math.floor(Math.random() * 7)){
+    switch(Math.floor(Math.random() * 4)){
         case 0:  this.info.position = 7;break;
         case 1:  this.info.position = 8;break;
         case 2:  this.info.position = 9;break;
@@ -325,7 +339,7 @@ if(rand < 30 && !doorlock[x]){
                             this.info.position = rand;
                         }
                 } else {
-                    if(Math.floor(Math.random() * 2)==0)this.attack(this.info.position);
+                    if(Math.floor(Math.random() * 3)==0)this.attack(this.info.position);
                 }
             }
         }
@@ -624,7 +638,7 @@ function tablet(x) {
         ctx.font = "40px Arial"
         if(settingB[3][0][4] == 1)ctx.fillText(Math.round(power) + "%", talbetEdges+10,talbetEdges+talbetCorners-10);
         if( 0 < time[1] && settingB[3][3][4] == 1)ctx.fillText(timeclock, talbetEdges+canvasX/10,talbetEdges+talbetCorners-10);
-        ctx.globalAlpha = 0.05; 
+        ctx.globalAlpha = 0.1; 
         ctx.fillRect((cameraOffset[2][0]) / camSize + camPosition[0],(cameraOffset[2][1] - talbetCorners * 2) / camSize + camPosition[1],(cameraOffset[3][0] - cameraOffset[2][0] - talbetCorners * 2) / camSize,(cameraOffset[3][1] - cameraOffset[2][1] - talbetCorners) / camSize);
         ctx.globalAlpha = 1;
         
@@ -670,7 +684,7 @@ window.addEventListener("keydown", (event) => {
             }}
             ; break;
         case 80:
-                pause == true ? pause = false :pause =  true;
+                pause = !pause;
             ;break;
         default: break;
     }
@@ -763,6 +777,7 @@ function blackout(){if(power <= 0 && godmode != 1){
 }}
 let timeclock = "20:00";
 function timer(){
+    if(!pause){
     time[0]++;
     if(0 < time[1]){
         if (time[0] == time[1]){
@@ -772,9 +787,7 @@ function timer(){
         }else{
             timeclock = Math.round(time[0]/time[1]*10-3) + ":00 "
         }
-        
-        
-}}
+    }}}
 function room0(){
     const upScale = [300,250];
     function drawDoorRoom0(x,y,z){
@@ -798,22 +811,27 @@ function gui(){
     const z = [canvasX/tabletTriger,canvasY/tabletUpTriger];
     const arrow = [[-1,0],[-1,0.5],[0.5,0.5],[0.5,1],[1.5,0]];
     const camera = [[-1,0],[-1,0.5],[0.5,0.5],[0.5,0],[1,0.5],[1,0]];
-    function poliRender(size,rotation,offset,object){
-        ctx.fillStyle = "#fff";
+    const lightBulb = [[-0.5,-1],[-0.5,-0.5],[-1,0],[-1,1],[-0.5,1.5],[0.5,1.5],[1,1],[1,0],[0.5,-0.5],[0.5,-1]];
+    function poliRender(size,rotation,offset,object,mirroring){
         ctx.beginPath();
-        ctx.moveTo(object[0][0]*rotation*size+offset[0],offset[1]+object[0][1]*size);
+        ctx.moveTo(object[0][0]*rotation*size+offset[0],offset[1]+object[0][1]*-1*size);
         for(let i = 1;i<object.length;i++){
-            ctx.lineTo(object[i][0]*rotation*size+offset[0],offset[1]+object[i][1]*size);
+            ctx.lineTo(object[i][0]*rotation*size+offset[0],offset[1]+object[i][1]*-1*size);
         }
-        for(let i = object.length-1;i>0;i--){
-            ctx.lineTo(object[i][0]*rotation*size+offset[0],offset[1]+object[i][1]*(-size));
-        }
+        if(mirroring){
+            for(let i = object.length-1;i>0;i--){
+            ctx.lineTo(object[i][0]*rotation*size+offset[0],offset[1]+object[i][1]*-1*(-size));
+        }}
         ctx.closePath();
         ctx.fill();
     }
-    poliRender(50,-1,[z[0]-200,canvasY/2],arrow);
-    poliRender(50,1,[canvasX-z[0]+200,canvasY/2],arrow);
-    poliRender(50,1,[canvasX/2,canvasY-z[1]/2],camera)
+    ctx.fillStyle = "#fff";
+    poliRender(50,-1,[z[0]-200,canvasY/2],arrow,true);
+    poliRender(50,1,[canvasX-z[0]+200,canvasY/2],arrow,true);
+    poliRender(50,1,[canvasX/2,canvasY-z[1]/2],camera,true);
+    ctx.fillStyle = (light) ? "#fa0" : "#444"; 
+    poliRender(50,1,[canvasX/3,z[1]],lightBulb,false);
+    poliRender(50,1,[canvasX/3*2,z[1]],lightBulb,false);
     ctx.fillStyle = "#fff";
     for(let i = 0;i<x;i++){
         ctx.fillRect(z[0],z[1]+i*((canvasY-2*z[1])/x),5,(canvasY-2*z[1])/(2*x));
@@ -830,13 +848,10 @@ function render() {
     tabletPullup();
     lights();
     tablet(cameras);
-    
-    
-    
+
     if (debug == true) {
         debugging();
     }
-    
 }}
 
 function ubdate() {
