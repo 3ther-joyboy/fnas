@@ -85,26 +85,39 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
 `this.camerastun` - ohromení z kamer (pouze u `foxy`) <br>
 ## Funkce
 ### game
+#### rendering
+`render()` - opakovaně se volá a spouští ostatní rendrovací funkce <br> 
+`debugging()` - vykreslí malý pointer na obrazovce <br>
 `endSrc()` přičte ke `k` 1 a jestli bude vyčí jak 5 restartuje stránku <br>
+`gui()` - vykreslování dodatečných informací jako kde se zapínají kamery/světla a se rozhlíží <br>
+  -  `poliRender` - z arraye vykreslí vrchní polovinu obrazce kterou poté ozrcadlí podél X <br>
+
+`buttonDraw()` - vykresluje tlačítka od dveří <br>
+
+`tablet()` - zpouští ostatní funkce a vyhresluje se <br>
+`roomsDraw(x)` - vykresluje minimapu na tabletu, zároveň při čemž kontoroluje myš jestli není na některé z těchle oken a změní sorce path `cameraImg` podle toho   <br>
+  -  `enemyDebug()` - jestli je zapnutý `debug` přebarvý danou mísnost podle zadaných hodnot <br>
+  
+`jitter()` - při najetí na kameru na několik framů zobrazjí digitální šum <br>
+`enemyCamRender(x)` - zkontoluje jaký nepřátelé se necházejí ve aktuálně vybrané místosti a vyrendruje je (jestli tam nejsou použije `nill`<br>
+`drawEnemyRoom0()` - vykreslí nepřátele v hlavní mísnosti jesli sou zaplá světla <br>
+  -  `enemy0` - aplykuje požadovaný scale na obrázky <br>
+  
+#### logick
+`ubdate()` - opakovaně se volá a spouští funkce na pohib nepřátel a vyhodnocení energie<br>
 `win()` printne výherní zprávu a kolik `power` vám zůstalo<br>
 `dies()` printne proherní zprávu kolik `power` a jak daleko jste se dostaly<br>
-`ubdate()` <br>
-`render()` <br>
-`buttonDraw()` - vykresluje tlačítka od dveří <br>
 `doorlocking(x)` - měmní booleany v array `doorlock` podle x<br>
 `doors()` - kontroluje na které tlačíto dveří klikáte a zpouští funkci `doorlocking(x)` s danými dveřmi <br>
 `lights()` - zapíná/vipíná světla a odečítá od `power` <br>
 `tabletPullup()` - zapíní/vipíná tablet a kontroluje jesli u vypínání není myš na kamerách <br>
-`enemyCamRender(x)` - zkontoluje jaký nepřátelé se necházejí ve aktuálně vybrané místosti a vyrendruje je (jestli tam nejsou použije `nill`<br>
-`roomsDraw(x)` - vykresluje minimapu na tabletu, zároveň při čemž kontoroluje myš jestli není na některé z těchle oken a změní sorce path `cameraImg` podle toho   <br>
-  -  `enemyDebug()` - jestli je zapnutý `debug` přebarvý danou mísnost podle zadaných hodnot <br>
-
-`jitter()` - při najetí na kameru na několik framů zobrazjí digitální šum <br>
-`tablet()` - zpouští ostatní funkce a vyhresluje se <br>
-`debugging()` - vykreslí malý pointer na obrazovce <br>
 `powerC()` - odečte danou energii od `power`<br>
-`drawEnemyRoom0()` - vykreslí nepřátele v hlavní mísnosti jesli sou zaplá světla <br>
-`backout() ` - impulzní funkce co vypne všechy elektricky náročné proměné<br>
+`blackout()` - impulzní funkce co vypne všechy elektricky náročné proměné<br>
+##### class enemak
+`attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
+`movmentOpportunityFoxy()` - zařizuje pohyb `foxy` po předdefinované trase a nedovoluje mu pohnout se dokut není `this.camerastun` na 0 <br>
+`movmentOpportunityFredy()` - pohyb po mapě `fredy` který se náhodně teleportuje a je šance 1/15 že zaujme útočnou pozici před dveřmy <br>
+`movmentOpporuniy()` - lyneární pohyb mapě pro `bonny`, `chicka` s procentáží na rozhodování <br>
 
 ### menu
 `mainMenu()` - velký switch s různýma stranama hlavního menu (kdybych tou dobou měl oběkty bylo by to přez oběkty) <br>
@@ -133,8 +146,4 @@ V custom  můžeme najít nastavení ohledně hry samotné jako je agrese charak
   - `camPosition` <br>
  
 `mainMenuselect()` - zpustí `variablerefresh()` a zpravuje interakci s menu v `mainMenu()` <br>
-### class enemak
-`attack()` - jesli jsou dveře na dané pozici otevřené vygeneruje číslo 0 - 100 které jestli bude menčí než 30 zpustí `dies()` <br>
-`movmentOpportunityFoxy()` - zařizuje pohyb `foxy` po předdefinované trase a nedovoluje mu pohnout se dokut není `this.camerastun` na 0 <br>
-`movmentOpportunityFredy()` - pohyb po mapě `fredy` který se náhodně teleportuje a je šance 1/15 že zaujme útočnou pozici před dveřmy <br>
-`movmentOpporuniy()` - lyneární pohyb mapě pro `bonny`, `chicka` s procentáží na rozhodování <br>
+
