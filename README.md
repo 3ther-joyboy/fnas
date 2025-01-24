@@ -1,4 +1,4 @@
-# Five Nights at Sorce
+# Five Nights at Source
 **Klauzurní práce *2023/24*** <br>
 **2. ročník 1. pololetí** <br>
 **Studijní předmět:** *Programovací jazyk JavaScript* <br>
